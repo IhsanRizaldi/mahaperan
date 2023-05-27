@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Angkatan;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class TagsController extends Controller
     public function index()
     {
         $tags = Tags::all();
-        return view('tags.index',compact('tags'));
+        $angkatan = Angkatan::all();
+        return view('tags.index',compact('tags','angkatan'));
     }
 
     /**

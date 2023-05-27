@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use Illuminate\Http\Request;
+use App\Models\Angkatan;
 
 class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($slug)
     {
-        //
+        $anggota = Anggota::with('angkatan')->whereHas('angkatan', function($query) use (&$slug){
+            $query->where('slug',$slug);
+        })->get();
+        $angkatan = Angkatan::all();
+        return view('anggota.index',compact('anggota','angkatan'));
     }
 
     /**

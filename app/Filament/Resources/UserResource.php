@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AnggotaResource\Pages;
-use App\Filament\Resources\AnggotaResource\RelationManagers;
-use App\Models\Anggota;
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Resources\Form;
@@ -13,14 +13,21 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
-class AnggotaResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Anggota::class;
+    protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
     protected static ?string $navigationGroup = 'Mahaperan';
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        
+        return Auth::user()->is_admin;
+    }
 
     public static function form(Form $form): Form
     {
@@ -28,22 +35,21 @@ class AnggotaResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        Forms\Components\Select::make('angkatan_id')
-                            ->relationship('angkatan','nama_angkatan')
-                            ->label('Angkatan')
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('password')
+                            ->password()
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Toggle::make('is_admin')
                             ->required(),
-                        Forms\Components\TextInput::make('nama_anggota')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('jabatan_anggota')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('nama_kampus')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\FileUpload::make('gambar')
-                            ->required(),
-                            ])
+                ])
+                
             ]);
     }
 
@@ -51,37 +57,36 @@ class AnggotaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('angkatan.nama_angkatan'),
-                Tables\Columns\TextColumn::make('nama_anggota'),
-                Tables\Columns\TextColumn::make('jabatan_anggota'),
-                Tables\Columns\TextColumn::make('nama_kampus'),
-                Tables\Columns\ImageColumn::make('gambar'),
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\IconColumn::make('is_admin')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('password')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAnggotas::route('/'),
-            'create' => Pages\CreateAnggota::route('/create'),
-            'edit' => Pages\EditAnggota::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }
+    }    
 }

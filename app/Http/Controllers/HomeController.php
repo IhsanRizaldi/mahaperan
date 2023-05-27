@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Angkatan;
 use App\Models\Article;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class HomeController extends Controller
     public function index()
     {
         $article = Article::all();
-        return view('home.index',compact('article'));
+        $angkatan = Angkatan::all();
+        return view('home.index',compact('article','angkatan'));
     }
 
     /**

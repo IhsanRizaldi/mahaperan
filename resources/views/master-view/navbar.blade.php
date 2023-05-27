@@ -23,9 +23,9 @@
               Member
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">MOT</a></li>
-              <li><a class="dropdown-item" href="#">MP21</a></li>
-              <li><a class="dropdown-item" href="#">MP22</a></li>
+              @foreach ($angkatan as $data)
+                  <li><a class="dropdown-item" href="{{ route('anggota.index',$data->slug) }}">{{ $data->kode_angkatan }}</a></li>
+              @endforeach
             </ul>
         </ul>
       </div>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('nama_angkatan');
-            $table->string('slug')->after('nama_angkatan');
+            $table->string('slug');
             $table->string('kode_angkatan');
             $table->string('gambar');
             $table->timestamps();

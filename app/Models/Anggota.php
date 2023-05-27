@@ -10,7 +10,7 @@ class Anggota extends Model
 {
     use HasFactory;
     protected $table = 'anggota';
-    protected $fillable = ['angkatan_id','nama_anggota','nama_kampus','jabatan','gambar'];
+    protected $fillable = ['angkatan_id','nama_anggota', 'jabatan_anggota','nama_kampus','gambar'];
 
     // Model
     protected static function booted(): void
