@@ -23,7 +23,7 @@
                                 <p style="color: grey;text-align: start">Author {{ $data->user->name }}</p>
                                 <p style="color: grey;text-align: start">Created At {{ $data->created_at->format('d-m-y') }}</p>
                                 <a href="{{ route('article.detail',$data->slug) }}" class="card-title" style="text-decoration: none;color: black">{{ $data->title_article }}</a>
-                                <p>{{ Str::limit($data->description_article, 50) }}</p>
+                                <p>{{ Str::limit($data->description_article, 30) }}</p>
                                 </div>
                             </div>
                         </div>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('title_tags');
+            $table->string('slug');
             $table->string('image_tags');
             $table->text('description_tags');
             $table->timestamps();

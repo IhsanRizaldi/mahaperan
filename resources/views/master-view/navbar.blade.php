@@ -10,13 +10,10 @@
             <a class="nav-link active text-light" aria-current="page" href="{{ route('home.index') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#about">About Us</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active text-light" aria-current="page" href="{{ route('tags.index') }}">Article</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#article">Catalog</a>
+            <a class="nav-link active text-light" aria-current="page" href="{{ route('catalog.index') }}">Catalog</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

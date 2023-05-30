@@ -17,7 +17,9 @@ class AnggotaController extends Controller
             $query->where('slug',$slug);
         })->get();
         $angkatan = Angkatan::all();
-        return view('anggota.index',compact('anggota','angkatan'));
+        return view('anggota.index',compact('anggota','angkatan'))->with([
+            'title' => 'Angkatan'
+        ]);
     }
 
     /**

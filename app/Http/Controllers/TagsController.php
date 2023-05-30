@@ -15,7 +15,9 @@ class TagsController extends Controller
     {
         $tags = Tags::all();
         $angkatan = Angkatan::all();
-        return view('tags.index',compact('tags','angkatan'));
+        return view('tags.index',compact('tags','angkatan'))->with([
+            'title' => 'Tags'
+        ]);
     }
 
     /**

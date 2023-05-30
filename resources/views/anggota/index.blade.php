@@ -20,7 +20,7 @@
                             <div class="card">
                                 <img src="{{ Storage::url($data->gambar) }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                <h5 style="font-size: 15px">Nama : {{ $data->nama_anggota }}</h5>
+                                <h5 style="font-size: 17px">Nama : {{ $data->nama_anggota }}</h5>
                                 <p >Jabatan : {{ $data->jabatan_anggota }}</p>
                                 <p >Kampus : {{ $data->nama_kampus}}</p>
                                 </div>

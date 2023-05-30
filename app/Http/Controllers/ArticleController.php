@@ -18,13 +18,17 @@ class ArticleController extends Controller
             $query->where('slug',$slug);
         })->get();
         $angkatan = Angkatan::all();
-        return view('tags.article.index',compact('article','angkatan'));
+        return view('tags.article.index',compact('article','angkatan'))->with([
+            'title' => 'Article'
+        ]);
     }
 
     public function show($slug)
     {
         $angkatan = Angkatan::all();
-        $article = Article::with('user')->where('slug',$slug)->first();
+        $article = Article::with('user',[
+            'title' => 'Article'
+        ])->where('slug',$slug)->first();
         return view('tags.article.show',compact('article','angkatan'));
     }
 

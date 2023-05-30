@@ -60,7 +60,7 @@
             <div class="card rounded-5" style="background-color: #F6931E">
                 <h2 class="mb-3 mt-5"><b>Article</b></h2>
                 <div class="row justify-content-center">
-                    @foreach ($article->slice(0,3) as $data)
+                    @foreach ($article->slice(0,6) as $data)
                         <div class="col-ms-3 col-md-3 col-lg-3 m-3 p-3">
                             <div class="card">
                                 <img src="{{ Storage::url($data->image_article) }}" class="card-img-top" alt="...">

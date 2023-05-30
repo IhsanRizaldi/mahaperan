@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CatalogControoller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagsController;
 use App\Models\Article;
@@ -23,3 +24,4 @@ Route::get('/tags', [TagsController::class,'index'])->name('tags.index');
 Route::get('/article/{slug}/', [ArticleController::class,'index'])->name('article.index');
 Route::get('/article_detail/{slug}/', [ArticleController::class,'show'])->name('article.detail');
 Route::get('/anggota/{slug}/', [AnggotaController::class,'index'])->name('anggota.index');
+Route::get('/catalog', [CatalogControoller::class,'index'])->name('catalog.index');

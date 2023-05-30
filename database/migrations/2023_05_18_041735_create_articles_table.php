@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('tags_id')->references('id')->on('tags')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->string('title_article');
+            $table->string('slug');
             $table->string('image_article');
             $table->text('description_article');
             $table->timestamps();

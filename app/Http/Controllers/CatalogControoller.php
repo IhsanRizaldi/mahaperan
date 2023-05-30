@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Angkatan;
-use App\Models\Article;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CatalogControoller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $article = Article::all();
         $angkatan = Angkatan::all();
-        return view('home.index',compact('article','angkatan'))->with([
-            'title' => 'Home'
+        return view('catalog.index',compact('angkatan'))->with([
+            'title' => 'Catalog'
         ]);
     }
 
